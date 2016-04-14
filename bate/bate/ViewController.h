@@ -13,7 +13,9 @@
 #import "SecondViewController.h"
 #import <sqlite3.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController{
+    sqlite3 * db;
+}
 
 
 
