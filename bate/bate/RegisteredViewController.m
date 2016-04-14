@@ -7,8 +7,8 @@
 //
 
 #import "RegisteredViewController.h"
-
-@interface RegisteredViewController ()
+#import "BateViewController.h"
+@interface RegisteredViewController ()<UIAlertViewDelegate>
 
 @end
 
@@ -33,5 +33,40 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (IBAction)goClick:(UIButton *)sender {
+    
+    if (_username.text.length ==0 || _paw1.text.length ==0 || _paw2.text.length ==0) {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"注册失败" message:@"请填写完整" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+        [alert show];
+    } else {
+        if (![_paw1.text isEqualToString:_paw2.text]) {
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"注册失败" message:@"两次输入的密码不一致" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+            [alert show];
+        } else {
+            if ([[NSUserDefaults standardUserDefaults]objectForKey:_username.text]) {
+                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"注册失败" message:@"该用户已存在" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+                [alert show];
+            } else {
+                [[NSUserDefaults standardUserDefaults]setObject:_paw1.text forKey:_username.text];
+                [[NSUserDefaults standardUserDefaults]synchronize];
+                UIAlertView *alery = [[UIAlertView alloc]initWithTitle:@"注册成功" message:@"23333" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+                [alery show];
+            }
+            
+        }
+    }
+}
+
+- (IBAction)quxiaoClick:(UIButton *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    [self.delegate sendValue:_username.text andValue:_paw1.text];
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 @end

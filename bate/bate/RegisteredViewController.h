@@ -7,7 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+@protocol sendValueDelegate <NSObject>
+
+-(void)sendValue:(id)sender1 andValue:(id)sender2;
+
+@end
 
 @interface RegisteredViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UITextField *username;
+@property (weak, nonatomic) IBOutlet UITextField *paw1;
+@property (weak, nonatomic) IBOutlet UITextField *paw2;
+- (IBAction)goClick:(UIButton *)sender;
+- (IBAction)quxiaoClick:(UIButton *)sender;
 
+@property (nonatomic, assign) id <sendValueDelegate>  delegate;
 @end

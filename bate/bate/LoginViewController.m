@@ -7,8 +7,16 @@
 //
 
 #import "LoginViewController.h"
+#import "FirstViewController.h"
+#import "RegisteredViewController.h"
+@interface LoginViewController ()<sendValueDelegate, UIAlertViewDelegate>
 
-@interface LoginViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *userName;
+@property (weak, nonatomic) IBOutlet UITextField *passWord;
+@property (weak, nonatomic) IBOutlet UIButton *denglu;
+@property (weak, nonatomic) IBOutlet UIButton *zhuce;
+- (IBAction)dengluClick:(UIButton *)sender;
+- (IBAction)zhuceClick:(UIButton *)sender;
 
 @end
 
@@ -34,4 +42,39 @@
 }
 */
 
+- (IBAction)dengluClick:(UIButton *)sender {
+    if (_userName.text.length == 0 || _passWord.text.length == 0 ) {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"登录失败" message:@"账号/密码不能为空" delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles: nil];
+        [alert show];
+    } else if (![[NSUserDefaults standardUserDefaults]objectForKey:_userName.text]){
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"登录失败" message:@"账号不存在" delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles: nil];
+        [alert show];
+    } else if (![[[NSUserDefaults standardUserDefaults]objectForKey:_userName.text] isEqualToString:_passWord.text]){
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"登录失败" message:@"密码错误" delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles: nil];
+        [alert show];
+    } else {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"登录成功" message:@"2333333" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
+        [alert show];
+    }
+
+ 
+
+}
+-(void)sendValue:(id)sender1 andValue:(id)sender2
+{
+    _userName.text = sender1;
+    _passWord.text = sender2;
+}
+
+- (IBAction)zhuceClick:(UIButton *)sender {
+    RegisteredViewController *mvc = [[RegisteredViewController alloc]init];
+    mvc.delegate = self;
+    [self.navigationController pushViewController:mvc animated:YES];
+}
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    FirstViewController *login = [[FirstViewController alloc]init];
+
+    [self.navigationController pushViewController:login animated:YES];
+}
 @end

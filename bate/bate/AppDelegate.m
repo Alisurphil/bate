@@ -23,7 +23,7 @@
     //获得main。story实例
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
     //在main.story中找到名为tab的页面
-    BateViewController *BateVC = [storyboard instantiateViewControllerWithIdentifier:@"Bate"];
+    BateViewController *BateVC = [storyboard instantiateViewControllerWithIdentifier:@"Login"];
     //将上述页面设置为app入口
     self.window.rootViewController = BateVC;
 
