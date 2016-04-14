@@ -192,7 +192,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G7E-26-vn0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="864" y="962"/>
+            <point key="canvasLocation" x="760" y="962"/>
         </scene>
         <!--First View Controller-->
         <scene sceneID="OhV-m8-2bI">

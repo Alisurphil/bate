@@ -24,7 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,13 +52,14 @@
     } else if (![[[NSUserDefaults standardUserDefaults]objectForKey:_userName.text] isEqualToString:_passWord.text]){
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"登录失败" message:@"密码错误" delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles: nil];
         [alert show];
-    } else {
+    }
+    else {
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"登录成功" message:@"2333333" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
       
         [alert show];
-        FirstViewController *First = [[FirstViewController alloc]init];
+        //FirstViewController *First = [[FirstViewController alloc]init];
         
-        [self presentViewController:First animated:YES completion:nil];
+        //[self presentViewController:First animated:YES completion:nil];
     }
 
  
@@ -73,8 +74,9 @@
 
 -(void)alertView:(UIAlertController *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    FirstViewController *First = [[FirstViewController alloc]init];
-
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    FirstViewController *First = [storyboard instantiateViewControllerWithIdentifier:@"First"];
     [self presentViewController:First animated:YES completion:nil];
+ 
 }
 @end
