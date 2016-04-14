@@ -18,7 +18,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *paw1;
 @property (weak, nonatomic) IBOutlet UITextField *paw2;
 - (IBAction)goClick:(UIButton *)sender;
-- (IBAction)quxiaoClick:(UIButton *)sender;
+
+- (IBAction)quxiaoClick:(UIButton *)sender forEvent:(UIEvent *)event;
+
 
 @property (nonatomic, assign) id <sendValueDelegate>  delegate;
 @end

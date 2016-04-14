@@ -17,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.navigationItem.title = @"注册页面";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -51,17 +52,23 @@
                 [[NSUserDefaults standardUserDefaults]setObject:_paw1.text forKey:_username.text];
                 [[NSUserDefaults standardUserDefaults]synchronize];
                 UIAlertView *alery = [[UIAlertView alloc]initWithTitle:@"注册成功" message:@"23333" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+                [self dismissViewControllerAnimated:YES completion:nil];
                 [alery show];
             }
             
         }
     }
+    
 }
 
-- (IBAction)quxiaoClick:(UIButton *)sender {
-    [self.navigationController popViewControllerAnimated:YES];
-
+- (IBAction)quxiaoClick:(UIButton *)sender forEvent:(UIEvent *)event {
+    //LoginViewController *mvc = [[LoginViewController alloc]init];
+    [self dismissViewControllerAnimated:YES completion:nil];
+    //[self.navigationController pushViewController:mvc animated:YES];
+    //[self.navigationController popViewControllerAnimated:YES];
 }
+
+
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {

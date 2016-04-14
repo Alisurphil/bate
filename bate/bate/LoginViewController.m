@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "FirstViewController.h"
 #import "RegisteredViewController.h"
+#import "BateViewController.h"
 @interface LoginViewController ()<sendValueDelegate, UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *userName;
@@ -16,7 +17,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *denglu;
 @property (weak, nonatomic) IBOutlet UIButton *zhuce;
 - (IBAction)dengluClick:(UIButton *)sender;
-- (IBAction)zhuceClick:(UIButton *)sender;
 
 @end
 
@@ -54,7 +54,11 @@
         [alert show];
     } else {
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"登录成功" message:@"2333333" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
+      
         [alert show];
+        FirstViewController *First = [[FirstViewController alloc]init];
+        
+        [self presentViewController:First animated:YES completion:nil];
     }
 
  
@@ -66,15 +70,11 @@
     _passWord.text = sender2;
 }
 
-- (IBAction)zhuceClick:(UIButton *)sender {
-    RegisteredViewController *mvc = [[RegisteredViewController alloc]init];
-    mvc.delegate = self;
-    [self.navigationController pushViewController:mvc animated:YES];
-}
--(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    FirstViewController *login = [[FirstViewController alloc]init];
 
-    [self.navigationController pushViewController:login animated:YES];
+-(void)alertView:(UIAlertController *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    FirstViewController *First = [[FirstViewController alloc]init];
+
+    [self presentViewController:First animated:YES completion:nil];
 }
 @end

@@ -8,7 +8,7 @@
 
 #import "FirstViewController.h"
 #import "LoginViewController.h"
-@interface FirstViewController ()<UIScrollViewDelegate>
+@interface FirstViewController ()<UIScrollViewDelegate,UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIView *headerView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
